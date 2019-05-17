@@ -22,16 +22,17 @@ export const getSmurfs = () => {
 
   return (dispatch) => {
     dispatch({
-      type: FETCHING_SMURFS
+      type: 'FETCHING_SMURFS'
     })
     request.then(res => {
+      console.log("res", res);
       dispatch({
-        type: FETCHED,
+        type: 'FETCHED',
         payload: res.data
       })      
     }).catch(err => {
       dispatch({
-        type: ERROR,
+        type: 'ERROR',
         payload: err.message
       })
     })
@@ -47,16 +48,17 @@ export const addSmurf = (smurf) => {
 
   return (dispatch) => {
     dispatch({
-      type: ADDING_SMURF
+      type: 'ADDING_SMURF'
     })
     request.then(res => {
+      console.log("post", res);
       dispatch({
-        type: SMURF_ADDED,
+        type: 'SMURF_ADDED',
         payload: res.data
       })
     }).catch(err => {
       dispatch({
-        type: ERROR,
+        type: 'ERROR',
         payload: err.message
       })
     })
@@ -72,11 +74,11 @@ export const delSmurf = (id) => {
 
   return (dispatch) => {
     dispatch({
-      type: DELETE_SMURF
+      type: 'DELETE_SMURF'
     })
     request.then(res => {
       dispatch({
-        type: DELETED,
+        type: 'DELETED',
         payload: res.data
       })
     }).catch(err => {

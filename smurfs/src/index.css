@@ -1,5 +1,21 @@
 body {
-  margin: 0;
+  width: 100%;
+  height: auto;
+  margin: 0 auto;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Baloo Bhai', cursive;
+  background-image: url('./assets/smurfs_background.jpg');
+  color: white;
+  text-shadow: 1px 1px 2px black, 0 0 45px blue, 0 0 18px darkblue;
+  background-size: 100% 100%;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+ul{
+  list-style: none;
+}
+button{
+  background-color: aqua;
 }

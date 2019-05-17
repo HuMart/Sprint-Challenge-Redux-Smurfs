@@ -53,13 +53,13 @@ componentDidMount(){
         {this.props.fetchingSmurfs ? (
             <h3>loading...</h3>
           ) : (
-          <ul>
+          <ul className= "list">
             {this.props.smurfs.map(smurf => {
               return <li key={smurf.name}>
               <h3>{smurf.name}</h3>
               <h5>Age: {smurf.age}</h5>
               <h5>Height: {smurf.height}</h5>
-              {(this.state.id === '') ? (<button value={smurf.id} onClick={this.idSet}>Delete</button>) : (<button onClick={this.delete}>Confirm Delete</button>)}
+              {(this.state.id === '') ? (<button className='button' value={smurf.id} onClick={this.idSet}>Delete</button>) : (<button className='button' onClick={this.delete}>Confirm Delete</button>)}
               </li>
             })}
           </ul>
@@ -84,7 +84,7 @@ componentDidMount(){
               value={this.state.height}
               name="height"
             />
-            <button type="submit">Add To Village!!</button>
+            <button className='button' type="submit">Add To Village!!</button>
           </form>
         </div>
       </div>

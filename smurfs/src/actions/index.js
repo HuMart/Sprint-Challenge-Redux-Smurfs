@@ -4,9 +4,9 @@ import axios from 'axios';
   Be sure to export each action type so you can pull it into your reducer
 */
 
-export const FETCHING_SMURFS = "FETCHING_SMURFS";
-export const FETCHED = "FETCHED";
-export const ERROR = "ERROR";
+export const FETCHING_SMURFS = 'FETCHING_SMURFS';
+export const FETCHED = 'FETCHED';
+export const ERROR = 'ERROR';
 /*
   For this project you'll need at least 2 action creators for the main portion,
    and 2 more for the stretch problem.
@@ -24,23 +24,22 @@ export const getSmurfs = () => {
     dispatch({
       type: 'FETCHING_SMURFS'
     })
-    request.then(res => {
-      console.log("res", res);
+    request.then(response => {
       dispatch({
         type: 'FETCHED',
-        payload: res.data
-      })      
-    }).catch(err => {
+        payload: response.data
+      })
+    }).catch(error => {
       dispatch({
         type: 'ERROR',
-        payload: err.message
+        payload: error.message
       })
     })
   }
 }
 
-export const ADDING_SMURF = "ADDING_SMURF";
-export const SMURF_ADDED = "SMURF_ADDED";
+// export const ADDING_SMURF = "ADDING_SMURF";
+// export const ADDED = "ADDED";
 
 
 export const addSmurf = (smurf) => {
@@ -50,23 +49,22 @@ export const addSmurf = (smurf) => {
     dispatch({
       type: 'ADDING_SMURF'
     })
-    request.then(res => {
-      console.log("post", res);
+    request.then(response => {
       dispatch({
-        type: 'SMURF_ADDED',
-        payload: res.data
+        type: 'ADDED',
+        payload: response.data
       })
-    }).catch(err => {
+    }).catch(error => {
       dispatch({
         type: 'ERROR',
-        payload: err.message
+        payload: error.message
       })
     })
   }
 }
 
-export const DELETE_SMURF = "DELETE_SMURF";
-export const DELETED = "DELETED";
+// export const DELETE_SMURF = "DELETE_SMURF";
+// export const DELETED = "DELETED";
 
 
 export const delSmurf = (id) => {
@@ -74,18 +72,19 @@ export const delSmurf = (id) => {
 
   return (dispatch) => {
     dispatch({
-      type: 'DELETE_SMURF'
+      type: 'DELETING_SMURF'
     })
-    request.then(res => {
+    request.then(response => {
       dispatch({
         type: 'DELETED',
-        payload: res.data
+        payload: response.data
       })
-    }).catch(err => {
+    }).catch(error => {
       dispatch({
-        type: ERROR,
-        payload: err.message
+        type: 'ERROR',
+        payload: error.message
       })
     })
   }
 }
+

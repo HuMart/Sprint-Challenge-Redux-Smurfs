@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import './App.css';
 import { connect }from 'react-redux';
-import { getSmurfs, addSmurf, delSmurf } from '../actions/index'
+import { getSmurfs, addSmurf, delSmurf } from '../actions/index';
 /*
  to wire this component up you're going to need a few things.
  I'll let you do this part on your own. 
@@ -18,29 +18,29 @@ class App extends Component {
       id: ''
     };
   }
-addSmurf = e => {
-  const smurf = {
-    name: this.state.name,
-    age: this.state.age,
-    height: this.state.height,
-    id: this.state.id
+  addSmurf = e => {
+    const smurf = {
+      name: this.state.name,
+      age: this.state.age,
+      height: this.state.height
+    }
+    this.props.addSmurf(smurf)
   }
-  this.props.addSmurfs(smurf)
-}
 
-handleInputChange = e => {
-  this.setState({ [e.target.name]: e.target.value})
-}
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
 
-delete = e => {
-  this.setState({ id: e.target.value})
-  this.props.delSmurf(this.state.id);
-  this.setState({ id: ''})
-}
+  delete = e => {
+    this.setState({ id: e.target.value })
+    this.props.delSmurf(this.state.id);
+    this.setState({ id: '' })
+  }
 
-idSet = e => {
-  this.setState({ id: e.target.value})
-}
+  idSet = e => {
+    this.setState({ id: e.target.value })
+  }
+
 
 componentDidMount(){
   this.props.getSmurfs()
@@ -51,14 +51,14 @@ componentDidMount(){
       <div className="App">
         <h1>SMURFS! 2.0 W/ Redux</h1>
         {this.props.fetchingSmurfs ? (
-          <h2>Loading...</h2>
-        ) : (
+            <h3>loading...</h3>
+          ) : (
           <ul>
             {this.props.smurfs.map(smurf => {
               return <li key={smurf.name}>
               <h3>{smurf.name}</h3>
-              <h5>{smurf.age}</h5>
-              <h5>{smurf.height}</h5>
+              <h5>Age: {smurf.age}</h5>
+              <h5>Height: {smurf.height}</h5>
               {(this.state.id === '') ? (<button value={smurf.id} onClick={this.idSet}>Delete</button>) : (<button onClick={this.delete}>Confirm Delete</button>)}
               </li>
             })}
@@ -93,7 +93,7 @@ componentDidMount(){
 }
 
 const mapStateToProps = state => {
-  return{
+  return {
     smurfs: state.smurfs,
     fetchingSmurfs: state.fetchingSmurfs
   }
